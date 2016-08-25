@@ -24,4 +24,4 @@ for movie in movies:
 新增print_lol函数，用于自动打印列表
 '''
 
-nester.print_lol(movies)
+nester.print_lol(movies,2)
