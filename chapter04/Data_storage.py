@@ -1,5 +1,8 @@
 import os
 
+import pickle
+
+from chapter04.nester import print_lol
 os.chdir('C:\\Users\\Administrator\\Desktop\\HeadFirstPython\\chapter03')
 man = []
 other = []
@@ -20,12 +23,22 @@ try:
 except IOError:
     print('File not find')
 try:
-    man_file = open('man_data.txt', 'w')
-    other_file = open('other_data.txt', 'w')
-    print(man, file=man_file)
-    print(other, file=other_file)
-except IOError:
-    print('File error')
-finally:
-    man_file.close()
-    other_file.close()
+    with open('man_data.txt', 'wb') as man_file:
+        pickle.dump(man, man_file)
+    with open('other_data.txt', 'wb') as other_file:
+        pickle.dump(other, other_file)
+except IOError as err:
+    print('File error:'+str(err))
+except pickle.PickleError as perr:
+    print('pickling error:' + str(perr))
+
+new_man=[]
+try:
+    with open('man_data.txt', 'rb') as man_file:
+        new_man = pickle.load(man_file)
+except IOError as err:
+    print('File error:' + str(err))
+except pickle.PickleError as perr:
+    print('Pickling error:' + str(perr))
+print_lol(new_man)
+
