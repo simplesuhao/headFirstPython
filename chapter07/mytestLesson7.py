@@ -10,4 +10,4 @@ data = put_to_store(the_file)
 data_copy = get_from_store()
 for each_athlets in data_copy:
     print(data_copy[each_athlets].name + '' + data_copy[each_athlets].dob)
-    `
+    
