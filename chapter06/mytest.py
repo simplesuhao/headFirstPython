@@ -1,5 +1,8 @@
-from chapter06.DataProcessing import get_coach_data
 import os
+
+from chapter06.AthleteExtendList import Athlete
+from chapter06.GetData import get_coach_data
+
 os.chdir('E:\python\headFirstPython\data')
 sarah = get_coach_data('sarah2.txt')
 james = get_coach_data('james2.txt')
@@ -12,3 +15,9 @@ print(james.name + "'s fastest times are:" + str(james.top3()))
 print(mikey.name + "'s fastest times are:" + str(mikey.top3()))
 print(julie.name + "'s fastest times are:" + str(julie.top3()))
 
+vera = Athlete('vera vi')
+vera.append('1.31')
+print(vera.top3())
+vera.extend(['2.22', '1-21', '2:22'])
+print(vera.name)
+print(vera.top3())
